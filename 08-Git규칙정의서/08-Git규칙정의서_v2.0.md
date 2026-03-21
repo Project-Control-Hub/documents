@@ -103,6 +103,7 @@ gitgraph
 | sprint | 스프린트 생성·운영 |
 | dashboard | 대시보드·가젯 |
 | audit | Audit Log·히스토리 |
+| mobile | Flutter 모바일 앱 |
 
 ### 2.4 Footer — Jira 이슈 참조
 
@@ -353,7 +354,7 @@ module.exports = {
     'scope-enum': [
       2,
       'always',
-      ['issue', 'board', 'workflow', 'jql', 'auth', 'sprint', 'dashboard', 'audit'],
+      ['issue', 'board', 'workflow', 'jql', 'auth', 'sprint', 'dashboard', 'audit', 'mobile'],
     ],
     'scope-empty': [1, 'never'],
     'subject-case': [2, 'never', ['upper-case']],
@@ -391,6 +392,10 @@ module.exports = {
   ],
   "*.{css,scss,json,md}": [
     "prettier --write"
+  ],
+  "*.dart": [
+    "dart format",
+    "dart analyze"
   ]
 }
 ```

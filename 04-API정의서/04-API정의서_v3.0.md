@@ -169,18 +169,20 @@ Rate Limit 초과 시 응답:
 **Response (200)**:
 | 필드 | 타입 | 설명 |
 |------|------|------|
-| accessToken | string | 액세스 토큰 (JWT, 유효기간 1시간) |
-| refreshToken | string | 리프레시 토큰 (유효기간 7일) |
-| expiresIn | number | 액세스 토큰 만료 시간 (초) |
+| accessToken | string | 액세스 토큰 (JWT, 유효기간 15분) |
+| refreshToken | string | 리프레시 토큰 (유효기간 1시간) |
+| expiresIn | number | 액세스 토큰 만료 시간 (초, 900) |
+| refreshExpiresIn | number | 리프레시 토큰 만료 시간 (초, 3600) |
 
 **Response 예시**:
 ```json
 {
   "success": true,
   "data": {
-    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "refreshToken": "dGhpcyBpcyBhIHJlZnJlc2ggdG9rZW4...",
-    "expiresIn": 3600
+    "accessToken": "eyJhbG...",
+    "refreshToken": "dGhpcy...",
+    "expiresIn": 900,
+    "refreshExpiresIn": 3600
   },
   "message": "로그인에 성공했습니다."
 }
@@ -213,7 +215,7 @@ Rate Limit 초과 시 응답:
   "success": true,
   "data": {
     "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-    "expiresIn": 3600
+    "expiresIn": 900
   }
 }
 ```

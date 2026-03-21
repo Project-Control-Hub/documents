@@ -20,7 +20,7 @@ v3.0에서는 Planning Poker 세션/투표, Screen Scheme/Field, Security Level 
 | 항목 | 내용 |
 |------|------|
 | DBMS | PostgreSQL |
-| 버전 | 16.x |
+| 버전 | 18 |
 | 문자셋 | UTF-8 |
 | Collation | ko_KR.UTF-8 |
 
@@ -415,6 +415,11 @@ erDiagram
 | parent_id | BIGINT | FK(ISSUE), SET NULL | NULL | 상위 이슈 ID (자기 참조) |
 | sprint_id | BIGINT | FK(SPRINT), SET NULL | NULL | 스프린트 ID |
 | security_level | ENUM('PUBLIC','INTERNAL','CONFIDENTIAL') | NOT NULL | 'PUBLIC' | 보안 레벨 |
+| duedate | DATE | - | NULL | 마감일 |
+| version | INT | NOT NULL | 0 | 낙관적 락 버전 (@Version) |
+| resolution | VARCHAR(50) | - | NULL | 해결 상태 |
+| resolution_date | TIMESTAMP | - | NULL | 해결일 |
+| archived | BOOLEAN | NOT NULL | false | 아카이브 여부 |
 | created_at | TIMESTAMP | NOT NULL | CURRENT_TIMESTAMP | 생성일 |
 | updated_at | TIMESTAMP | NOT NULL | CURRENT_TIMESTAMP | 수정일 |
 
@@ -449,6 +454,7 @@ CREATE INDEX idx_issue_fts ON ISSUE
 | start_date | DATE | - | NULL | 시작일 |
 | end_date | DATE | - | NULL | 종료일 |
 | goal_points | INT | - | NULL | 목표 스토리 포인트 |
+| goal | TEXT | - | NULL | 스프린트 목표 |
 | created_at | TIMESTAMP | NOT NULL | CURRENT_TIMESTAMP | 생성일 |
 
 **인덱스**:
