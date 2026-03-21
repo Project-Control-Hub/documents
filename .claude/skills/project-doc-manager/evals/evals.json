@@ -4,19 +4,49 @@
     {
       "id": 1,
       "prompt": "우리 프로젝트 이름은 '온라인 쇼핑몰'이야. 프로젝트 문서 폴더랑 템플릿 전부 초기화해줘. 작성자는 김개발이야.",
-      "expected_output": "docs/ 하위에 13개 폴더 생성, 각 폴더에 v1.0 템플릿 파일, README.md 인덱스 파일 생성",
+      "expected_output": "13개 폴더 + v1.0 템플릿 + README.md 생성. standard depth 적용",
       "files": []
     },
     {
       "id": 2,
       "prompt": "ERD 문서만 하나 만들어줘. 프로젝트명은 CRM 시스템이야. 작성자는 박설계.",
-      "expected_output": "docs/02-ERD/ 폴더에 02-ERD_v1.0.md 파일 생성, ERD 전용 상세 템플릿(Mermaid erDiagram 포함) 적용",
+      "expected_output": "02-ERD/ 폴더에 02-ERD_v1.0.md 생성, Mermaid erDiagram 포함",
       "files": []
     },
     {
       "id": 3,
-      "prompt": "API 정의서 버전 올려줘. 인증 관련 엔드포인트를 추가했거든. 기존에 docs/04-API정의서/04-API정의서_v1.0.md 가 있어.",
-      "expected_output": "docs/04-API정의서/04-API정의서_v2.0.md 파일 생성, 메타데이터 버전 v2.0으로 갱신, 변경 이력에 새 항목 추가",
+      "prompt": "API 정의서 버전 올려줘. 인증 관련 엔드포인트를 추가했거든.",
+      "expected_output": "04-API정의서_v2.0.md 생성, 메타데이터 갱신, README 자동 갱신",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "이 기능정의서를 참고해서 프로젝트 문서 전체를 만들어줘. docs 폴더 말고 루트에 생성해줘.",
+      "expected_output": "참조 문서 기반으로 내용이 채워진 13종 문서 생성, 루트 경로에 생성, comprehensive depth",
+      "files": ["Jira_기능정의서_v3.md"]
+    },
+    {
+      "id": 5,
+      "prompt": "현재 문서들의 품질을 분석해줘. 원본 기능정의서 대비 누락된 내용이 뭐가 있는지 알려줘.",
+      "expected_output": "문서별 완성도 %, 누락/깊이/정합성 분석 레포트, Phase별 보강 로드맵",
+      "files": ["Jira_기능정의서_v3.md"]
+    },
+    {
+      "id": 6,
+      "prompt": "분석 결과를 기반으로 요구사항정의서를 보강해줘.",
+      "expected_output": "07-요구사항정의서 v2.0 생성 (상세 FR, NFR, RTM), README 자동 갱신",
+      "files": []
+    },
+    {
+      "id": 7,
+      "prompt": "문서 간 cross-reference를 정리해줘. ERD와 API가 잘 연결되는지도 확인해줘.",
+      "expected_output": "문서 간 참조 링크 삽입, ERD 엔티티 vs API 엔드포인트 매핑 검증, RTM 갱신",
+      "files": []
+    },
+    {
+      "id": 8,
+      "prompt": "이건 데이터 파이프라인 프로젝트야. 화면 관련 문서는 필요 없고 ETL, 스케줄링 관련 문서가 필요해.",
+      "expected_output": "data-pipeline 프로필 적용: 화면기능정의서/스토리보드 제외, ETL/스케줄링 문서 포함",
       "files": []
     }
   ]
