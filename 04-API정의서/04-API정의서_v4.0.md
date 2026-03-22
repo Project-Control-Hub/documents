@@ -1,5 +1,5 @@
 ---
-문서명: Jira 프로젝트 관리 시스템 API 정의서
+문서명: Project Control Hub API 정의서
 버전: v4.0
 작성일: 2026-03-21
 최종수정일: 2026-03-22
@@ -7,7 +7,7 @@
 상태: 검토중
 ---
 
-# Jira 프로젝트 관리 시스템 API 정의서
+# Project Control Hub API 정의서
 
 ## 목차
 
@@ -52,8 +52,8 @@
 
 | 항목 | 내용 |
 |------|------|
-| Base URL | `https://api.jira-pm.example.com/rest/api/3` |
-| Agile URL | `https://api.jira-pm.example.com/rest/agile/1.0` |
+| Base URL | `https://api.pch.example.com/rest/api/3` |
+| Agile URL | `https://api.pch.example.com/rest/agile/1.0` |
 | 인증 방식 | Bearer Token (JWT) |
 | Content-Type | application/json |
 | 문자 인코딩 | UTF-8 |
@@ -63,8 +63,8 @@
 API 버전은 URL 경로 방식으로 관리합니다.
 
 ```
-https://api.jira-pm.example.com/rest/api/3/...
-https://api.jira-pm.example.com/rest/agile/1.0/...
+https://api.pch.example.com/rest/api/3/...
+https://api.pch.example.com/rest/agile/1.0/...
 ```
 
 **Deprecation 정책**:
@@ -311,7 +311,7 @@ Rate Limit 초과 시 응답:
   "data": {
     "id": "10143",
     "key": "PROJ-143",
-    "self": "https://api.jira-pm.example.com/rest/api/3/issue/PROJ-143"
+    "self": "https://api.pch.example.com/rest/api/3/issue/PROJ-143"
   },
   "message": "이슈가 생성되었습니다."
 }
@@ -364,7 +364,7 @@ Rate Limit 초과 시 응답:
   "data": {
     "id": "10143",
     "key": "PROJ-143",
-    "self": "https://api.jira-pm.example.com/rest/api/3/issue/PROJ-143",
+    "self": "https://api.pch.example.com/rest/api/3/issue/PROJ-143",
     "fields": {
       "summary": "[회원] 로그인 실패 메시지 개선",
       "issuetype": { "name": "Story" },
@@ -587,7 +587,7 @@ project = PROJ AND start_date >= "2026-04-01" AND start_date <= "2026-04-30" ORD
   "success": true,
   "data": {
     "id": 5,
-    "self": "https://api.jira-pm.example.com/rest/agile/1.0/sprint/5",
+    "self": "https://api.pch.example.com/rest/agile/1.0/sprint/5",
     "name": "Sprint 5",
     "state": "future",
     "boardId": 1,
@@ -693,7 +693,7 @@ project = PROJ AND start_date >= "2026-04-01" AND start_date <= "2026-04-30" ORD
     "projectId": 10000,
     "releaseDate": "2026-04-01",
     "released": false,
-    "self": "https://api.jira-pm.example.com/rest/api/3/version/10001"
+    "self": "https://api.pch.example.com/rest/api/3/version/10001"
   }
 }
 ```
@@ -755,7 +755,7 @@ project = PROJ AND start_date >= "2026-04-01" AND start_date <= "2026-04-30" ORD
     "displayName": "김개발",
     "emailAddress": "kim.developer@company.com",
     "avatarUrls": {
-      "48x48": "https://api.jira-pm.example.com/avatar/48/user-account-id-123"
+      "48x48": "https://api.pch.example.com/avatar/48/user-account-id-123"
     },
     "active": true,
     "timeZone": "Asia/Seoul",
@@ -944,7 +944,7 @@ project = PROJ AND start_date >= "2026-04-01" AND start_date <= "2026-04-30" ORD
     "id": "10000",
     "key": "PROJ",
     "name": "병원 예약 시스템",
-    "self": "https://api.jira-pm.example.com/rest/api/3/project/PROJ"
+    "self": "https://api.pch.example.com/rest/api/3/project/PROJ"
   }
 }
 ```
@@ -1234,7 +1234,7 @@ project = PROJ AND start_date >= "2026-04-01" AND start_date <= "2026-04-30" ORD
     "values": [
       {
         "id": 1,
-        "self": "https://api.jira-pm.example.com/rest/agile/1.0/board/1",
+        "self": "https://api.pch.example.com/rest/agile/1.0/board/1",
         "name": "PROJ Scrum Board",
         "type": "scrum",
         "isDefault": true,
@@ -1289,7 +1289,7 @@ project = PROJ AND start_date >= "2026-04-01" AND start_date <= "2026-04-30" ORD
     "type": "kanban",
     "projectId": 10000,
     "isDefault": false,
-    "self": "https://api.jira-pm.example.com/rest/agile/1.0/board/2"
+    "self": "https://api.pch.example.com/rest/agile/1.0/board/2"
   }
 }
 ```
@@ -2293,8 +2293,8 @@ project = PROJ AND start_date >= "2026-04-01" AND start_date <= "2026-04-30" ORD
   "success": true,
   "data": {
     "issues": [
-      { "key": "PROJ-143", "self": "https://api.jira-pm.example.com/rest/api/3/issue/PROJ-143" },
-      { "key": "PROJ-144", "self": "https://api.jira-pm.example.com/rest/api/3/issue/PROJ-144" }
+      { "key": "PROJ-143", "self": "https://api.pch.example.com/rest/api/3/issue/PROJ-143" },
+      { "key": "PROJ-144", "self": "https://api.pch.example.com/rest/api/3/issue/PROJ-144" }
     ],
     "errors": []
   }
@@ -2552,10 +2552,10 @@ sequenceDiagram
 **Request 예시**:
 ```json
 {
-  "url": "https://hooks.example.com/jira-webhook",
+  "url": "https://hooks.example.com/pch-webhook",
   "webhooks": [
     {
-      "events": ["jira:issue_created", "jira:issue_updated"],
+      "events": ["pch:issue_created", "pch:issue_updated"],
       "jqlFilter": "project = PROJ"
     }
   ]
@@ -2568,9 +2568,9 @@ sequenceDiagram
 
 | 이벤트 | 설명 |
 |--------|------|
-| `jira:issue_created` | 이슈 생성 |
-| `jira:issue_updated` | 이슈 수정 (필드 변경, 상태 전환 포함) |
-| `jira:issue_deleted` | 이슈 삭제 |
+| `pch:issue_created` | 이슈 생성 |
+| `pch:issue_updated` | 이슈 수정 (필드 변경, 상태 전환 포함) |
+| `pch:issue_deleted` | 이슈 삭제 |
 | `comment_created` | 댓글 생성 |
 | `comment_updated` | 댓글 수정 |
 | `comment_deleted` | 댓글 삭제 |
@@ -2596,7 +2596,7 @@ sequenceDiagram
 ```json
 {
   "timestamp": 1742518800000,
-  "webhookEvent": "jira:issue_updated",
+  "webhookEvent": "pch:issue_updated",
   "issue_event_type_name": "issue_generic",
   "user": {
     "accountId": "user-account-id-123",
@@ -2631,8 +2631,8 @@ sequenceDiagram
 **요청 헤더**:
 ```
 X-Hub-Signature-256: sha256=<HMAC-SHA256 hex digest>
-X-Jira-Webhook-ID: <webhook-id>
-X-Jira-Event: jira:issue_updated
+X-PCH-Webhook-ID: <webhook-id>
+X-PCH-Event: pch:issue_updated
 ```
 
 **서명 검증 로직 (Node.js 예시)**:

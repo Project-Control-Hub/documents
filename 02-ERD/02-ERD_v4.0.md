@@ -1,5 +1,5 @@
 ---
-문서명: Jira 프로젝트 관리 시스템 ERD 문서
+문서명: Project Control Hub ERD 문서
 버전: v4.0
 작성일: 2026-03-21
 최종수정일: 2026-03-22
@@ -7,11 +7,11 @@
 상태: 검토중
 ---
 
-# Jira 프로젝트 관리 시스템 ERD (Entity-Relationship Diagram)
+# Project Control Hub ERD (Entity-Relationship Diagram)
 
 ## 1. 개요
 
-본 문서는 Jira 프로젝트 관리 시스템의 데이터베이스 구조를 정의한다.
+본 문서는 Project Control Hub의 데이터베이스 구조를 정의한다.
 v2.0에서는 N:M 중간 테이블 추가, 누락 엔티티 12개 추가, 전체 테이블 명세 및 인덱스 완성, 프로젝트별 RBAC 지원이 반영되었다.
 v3.0에서는 Planning Poker 세션/투표, Screen Scheme/Field, Security Level Permission 테이블이 추가되었다.
 v4.0에서는 BOARD 엔티티 추가(프로젝트당 복수 보드, 관리자 초대 방식 반영), USER_ACCOUNT 컬럼 보완, ISSUE.start_date 추가, EXTERNAL_INTEGRATION/AUTOMATION_EXECUTION_LOG 테이블 추가, COMMENT visibility 컬럼 추가, ISSUE_LINK.link_type에 CLONES 추가가 반영되었다.
@@ -948,7 +948,7 @@ CREATE INDEX idx_issue_fts ON ISSUE
 
 ### 3.29 EXTERNAL_INTEGRATION (외부 연동 설정) — v4.0 신규 추가
 
-> v4.0 신규 추가. 프로젝트별 외부 시스템 연동(GitHub, Slack, Jira Cloud, CI/CD) 설정을 관리한다. config 필드는 암호화된 JSONB로 저장한다.
+> v4.0 신규 추가. 프로젝트별 외부 시스템 연동(GitHub, Slack, Atlassian Jira Cloud, CI/CD) 설정을 관리한다. config 필드는 암호화된 JSONB로 저장한다.
 
 | 컬럼명 | 타입 | 제약조건 | 기본값 | 설명 |
 |--------|------|----------|--------|------|

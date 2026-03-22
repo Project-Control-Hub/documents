@@ -14,7 +14,7 @@
 4. [스토리 포인트 및 산정](#4-스토리-포인트-및-산정)
 5. [아카이브 정책](#5-아카이브-정책)
 6. [히스토리 Audit-Log 강화](#6-히스토리-audit-log-강화)
-7. [Jira 운영 정책](#7-jira-운영-정책)
+7. [운영 정책](#7-운영-정책)
 8. [표준 Workflow 정의](#8-표준-workflow-정의)
 9. [Issue Type 계층 정의](#9-issue-type-계층-정의)
 10. [Definition of Ready / Done](#10-definition-of-ready--done)
@@ -201,9 +201,9 @@ iOS / Android 크로스플랫폼 모바일 앱을 Flutter 단일 코드베이스
 
 ---
 
-## 7. Jira 운영 정책
+## 7. 운영 정책
 
-> **목적**: 팀 전체가 일관된 방식으로 Jira를 사용하도록 기준을 제시합니다.
+> **목적**: 팀 전체가 일관된 방식으로 Project Control Hub를 사용하도록 기준을 제시합니다.
 
 ### 7.1 이슈 제목 작성 규칙
 
@@ -437,7 +437,7 @@ flowchart TD
 
 ### 12.1 개요
 
-Jira의 **Fix Version** 기능을 활용해 이슈를 릴리즈 단위로 묶어 관리합니다.
+Atlassian Jira의 **Fix Version** 기능을 활용해 이슈를 릴리즈 단위로 묶어 관리합니다.
 
 | 기능 | 설명 |
 |------|------|

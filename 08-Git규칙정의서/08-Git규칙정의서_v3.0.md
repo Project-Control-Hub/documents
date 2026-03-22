@@ -1,5 +1,5 @@
 ---
-문서명: Jira 프로젝트 관리 시스템 Git 규칙 정의서
+문서명: Project Control Hub Git 규칙 정의서
 버전: v3.0
 작성일: 2026-03-21
 최종수정일: 2026-03-22
@@ -7,14 +7,14 @@
 상태: 검토중
 ---
 
-# Jira 프로젝트 관리 시스템 Git 규칙 정의서
+# Project Control Hub Git 규칙 정의서
 
 ## 목차
 
 1. [브랜치 전략](#1-브랜치-전략)
 2. [커밋 컨벤션](#2-커밋-컨벤션)
 3. [PR (Pull Request) 규칙](#3-pr-pull-request-규칙)
-4. [Jira Smart Commit 연동](#4-jira-smart-commit-연동)
+4. [Atlassian Jira Smart Commit 연동](#4-atlassian-jira-smart-commit-연동)
 5. [브랜치 보호 규칙](#5-브랜치-보호-규칙)
 6. [Git Hook 설정](#6-git-hook-설정)
 7. [태그 전략](#7-태그-전략)
@@ -105,9 +105,9 @@ gitgraph
 | audit | Audit Log·히스토리 |
 | mobile | Flutter 모바일 앱 |
 
-### 2.4 Footer — Jira 이슈 참조
+### 2.4 Footer — 이슈 참조
 
-커밋 footer에 Jira 이슈 키를 반드시 포함합니다.
+커밋 footer에 이슈 키를 반드시 포함합니다.
 
 ```
 # 이슈 참조 (완료되지 않은 경우)
@@ -159,7 +159,7 @@ Refs: PROJ-201
 -
 
 ## 변경 사유
-- Jira Issue: [PROJ-{번호}](https://your-domain.atlassian.net/browse/PROJ-{번호})
+- Issue: [PROJ-{번호}](https://your-domain.atlassian.net/browse/PROJ-{번호})
 
 ## 테스트 결과
 - [ ] 단위 테스트 통과
@@ -171,7 +171,7 @@ Refs: PROJ-201
 - Closes PROJ-{번호}
 ```
 
-> PR 본문에 `PROJ-{번호}` 형식으로 이슈 키를 포함하면 Jira에서 자동으로 PR과 이슈가 연결됩니다.
+> PR 본문에 `PROJ-{번호}` 형식으로 이슈 키를 포함하면 Atlassian Jira에서 자동으로 PR과 이슈가 연결됩니다.
 
 ### 3.2 PR 규칙
 
@@ -223,18 +223,18 @@ feat(board): 칸반 WIP 제한 UI 구현 (#42)
 Closes: PROJ-24
 ```
 
-- PR 번호(`#42`)와 Jira 이슈 키(`Closes: PROJ-24`)를 Squash 커밋에 반드시 포함합니다.
+- PR 번호(`#42`)와 이슈 키(`Closes: PROJ-24`)를 Squash 커밋에 반드시 포함합니다.
 - GitHub/GitLab의 PR 화면에서 전체 커밋 이력을 별도로 확인할 수 있습니다.
 
 ---
 
-## 4. Jira Smart Commit 연동
+## 4. Atlassian Jira Smart Commit 연동
 
-Bitbucket, GitHub, GitLab과 Jira를 연동하면 커밋 메시지에 특수 키워드를 삽입하는 것만으로 이슈 상태 전환, 댓글 추가, 시간 기록을 자동화할 수 있습니다.
+Bitbucket, GitHub, GitLab과 Atlassian Jira를 연동하면 커밋 메시지에 특수 키워드를 삽입하는 것만으로 이슈 상태 전환, 댓글 추가, 시간 기록을 자동화할 수 있습니다.
 
-### 4.1 Jira 이슈 키 포함 필수 규칙
+### 4.1 이슈 키 포함 필수 규칙
 
-모든 커밋 메시지에는 관련 Jira 이슈 키가 반드시 포함되어야 합니다.
+모든 커밋 메시지에는 관련 이슈 키가 반드시 포함되어야 합니다.
 
 ```
 형식: {프로젝트키}-{번호}
@@ -272,20 +272,20 @@ PROJ-145 #comment PR 생성, 리뷰 요청합니다 #time 1h #review"
 
 ### 4.4 자동 상태 전환 매핑
 
-| Smart Commit 명령어 | Jira 이슈 전환 상태 |
+| Smart Commit 명령어 | 이슈 전환 상태 |
 |--------------------|-------------------|
 | `#resolve` | → Done |
 | `#review` | → Code Review |
 | `#close` | → Done (Closed) |
 
-> Smart Commit 기능은 Jira의 Development Tools(GitHub/Bitbucket 연동) 설정이 완료된 환경에서 동작합니다.
+> Smart Commit 기능은 Atlassian Jira의 Development Tools(GitHub/Bitbucket 연동) 설정이 완료된 환경에서 동작합니다.
 
 ### 4.5 이슈 키 누락 시 커밋 거부 정책
 
 `commit-msg` Git Hook을 통해 이슈 키 포함 여부를 자동 검증합니다. 이슈 키가 없는 커밋은 로컬에서 즉시 거부되며, 아래 안내 메시지가 출력됩니다.
 
 ```
-[commit-msg hook] 오류: Jira 이슈 키가 누락되었습니다.
+[commit-msg hook] 오류: 이슈 키가 누락되었습니다.
 커밋 메시지에 이슈 키(예: PROJ-123)를 포함하세요.
 
 올바른 예: feat(auth): 로그인 구현 / Refs: PROJ-123
@@ -353,7 +353,7 @@ Branch name pattern: main
    - 포함 정보: PR 링크, 이슈 키, 머지 수행자, 바이패스 사유
 2. 72시간 이내: 관련 개발자가 정식 코드 리뷰 수행
    - 리뷰 결과를 원본 PR 또는 후속 PR 코멘트에 기록
-3. 72시간 초과 시: TL이 Jira 이슈에 리뷰 누락 사유 기록 및 다음 스프린트 내 처리
+3. 72시간 초과 시: TL이 이슈에 리뷰 누락 사유 기록 및 다음 스프린트 내 처리
 ```
 
 > Slack #hotfix-log 채널 알림은 GitHub Actions `pull_request` 이벤트(merged + hotfix/* 브랜치)를 트리거로 자동 발송한다.
@@ -394,7 +394,7 @@ Git Hook과 Husky를 조합하여 커밋 품질을 자동으로 보장합니다.
 
 ### 6.1 commit-msg
 
-커밋 메시지의 Conventional Commits 형식 준수와 Jira 이슈 키 포함 여부를 검증합니다.
+커밋 메시지의 Conventional Commits 형식 준수와 이슈 키 포함 여부를 검증합니다.
 
 **commitlint.config.js**
 
@@ -419,7 +419,7 @@ module.exports = {
     'subject-max-length': [2, 'always', 72],
     'body-max-line-length': [2, 'always', 100],
   },
-  // Jira 이슈 키 포함 여부 커스텀 플러그인
+  // 이슈 키 포함 여부 커스텀 플러그인
   plugins: [
     {
       rules: {
@@ -427,7 +427,7 @@ module.exports = {
           const hasIssueKey = /[A-Z]+-\d+/.test(raw);
           return [
             hasIssueKey,
-            '커밋 메시지에 Jira 이슈 키(예: PROJ-123)가 포함되어야 합니다.',
+            '커밋 메시지에 이슈 키(예: PROJ-123)가 포함되어야 합니다.',
           ];
         },
       },
@@ -538,25 +538,25 @@ PATCH : 버그 수정, 마이너 개선
   v2.0.0  → Breaking Change(API v2 전환)
 ```
 
-### 7.2 태그와 Jira Fix Version 1:1 매핑
+### 7.2 태그와 Atlassian Jira Fix Version 1:1 매핑
 
-릴리즈 아티팩트의 일관성을 위해 Git 태그, Jira Fix Version, Docker 이미지 태그를 동일한 버전 식별자로 통일합니다.
+릴리즈 아티팩트의 일관성을 위해 Git 태그, Atlassian Jira Fix Version, Docker 이미지 태그를 동일한 버전 식별자로 통일합니다.
 
 | 구성 요소 | 식별자 예시 |
 |-----------|------------|
 | Git Tag | `v1.0.0` |
-| Jira Fix Version | `v1.0.0` |
+| Atlassian Jira Fix Version | `v1.0.0` |
 | Docker Image (Production) | `registry/app:v1.0.0` |
 | Docker Image (Staging) | `registry/app:v1.0.0-rc.1` |
 | Docker Image (개발/디버깅) | `registry/app:v1.0.0-a1b2c3d` |
 
 **Docker 이미지 태그 규칙 (환경별 통일)**
 
-Production 배포 시 Docker 이미지 태그는 반드시 `v{semver}` 형식만 사용하며, 이는 Git Tag 및 Jira Fix Version과 정확히 1:1 대응한다.
+Production 배포 시 Docker 이미지 태그는 반드시 `v{semver}` 형식만 사용하며, 이는 Git Tag 및 Atlassian Jira Fix Version과 정확히 1:1 대응한다.
 
 | 환경 | 태그 형식 | 예시 | 비고 |
 |------|-----------|------|------|
-| Production | `v{semver}` | `v1.2.3` | Git Tag, Jira Fix Version과 1:1 대응 필수 |
+| Production | `v{semver}` | `v1.2.3` | Git Tag, Atlassian Jira Fix Version과 1:1 대응 필수 |
 | Staging | `v{semver}-rc.{n}` | `v1.2.3-rc.1` | Release Candidate, QA 검증용 |
 | 개발/디버깅 | `v{semver}-{git-sha-short}` | `v1.2.3-a1b2c3d` | 정확한 빌드 추적용 |
 
@@ -579,7 +579,7 @@ Production 배포 시 Docker 이미지 태그는 반드시 `v{semver}` 형식만
 1. release/{버전} 브랜치에서 최종 QA 통과
 2. release/{버전} → main Merge
 3. main 브랜치에서 태그 생성
-4. Jira Fix Version 상태를 Released로 전환
+4. Atlassian Jira Fix Version 상태를 Released로 전환
 5. Docker 이미지 빌드 및 레지스트리 푸시 (태그 동일)
 ```
 
@@ -699,8 +699,8 @@ git rebase --abort
 
 | 브랜치 유형 | 생성 시점 | 삭제 시점 | 권장 수명 |
 |------------|-----------|-----------|-----------|
-| feature/* | Jira 이슈 In Progress 전환 | PR 머지 후 즉시 | 1 Sprint (2주) 이내 |
-| bugfix/* | Jira Bug 이슈 In Progress 전환 | PR 머지 후 즉시 | 1 Sprint (2주) 이내 |
+| feature/* | 이슈 In Progress 전환 | PR 머지 후 즉시 | 1 Sprint (2주) 이내 |
+| bugfix/* | Bug 이슈 In Progress 전환 | PR 머지 후 즉시 | 1 Sprint (2주) 이내 |
 | hotfix/* | 긴급 결함 발생 | main/develop 머지 후 즉시 | 1~3일 |
 | release/* | Sprint 완료 후 QA 시작 | main 머지 후 즉시 | 1~2주 |
 
