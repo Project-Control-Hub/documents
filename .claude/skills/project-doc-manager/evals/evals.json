@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "우리 프로젝트 이름은 '온라인 쇼핑몰'이야. 프로젝트 문서 폴더랑 템플릿 전부 초기화해줘. 작성자는 김개발이야.",
-      "expected_output": "13개 폴더 + v1.0 템플릿 + README.md 생성. standard depth 적용",
+      "expected_output": "16개 폴더 + v1.0 템플릿 + README.md 생성. standard depth 적용",
       "files": []
     },
     {
@@ -22,7 +22,7 @@
     {
       "id": 4,
       "prompt": "이 기능정의서를 참고해서 프로젝트 문서 전체를 만들어줘. docs 폴더 말고 루트에 생성해줘.",
-      "expected_output": "참조 문서 기반으로 내용이 채워진 13종 문서 생성, 루트 경로에 생성, comprehensive depth",
+      "expected_output": "참조 문서 기반으로 내용이 채워진 16종 문서 생성, 루트 경로에 생성, comprehensive depth",
       "files": ["Jira_기능정의서_v3.md"]
     },
     {
@@ -46,7 +46,25 @@
     {
       "id": 8,
       "prompt": "이건 데이터 파이프라인 프로젝트야. 화면 관련 문서는 필요 없고 ETL, 스케줄링 관련 문서가 필요해.",
-      "expected_output": "data-pipeline 프로필 적용: 화면기능정의서/스토리보드 제외, ETL/스케줄링 문서 포함",
+      "expected_output": "data-pipeline 프로필 적용: 화면기능정의서/스토리보드/사용자매뉴얼 제외, ETL/스케줄링 문서 포함",
+      "files": []
+    },
+    {
+      "id": 9,
+      "prompt": "테스트 보고서를 만들어줘. Sprint 3 테스트 결과를 정리해야 해. 단위 테스트 120개 중 115개 통과, E2E 30개 중 28개 통과했어.",
+      "expected_output": "12-테스트보고서/ 폴더에 12-테스트보고서_v1.0.md 생성, 테스트 결과 요약/결함 현황/커버리지/릴리스 판정 포함",
+      "files": []
+    },
+    {
+      "id": 10,
+      "prompt": "사용자 매뉴얼 만들어줘. 학습 관리 시스템(LMS)이고 학생/강사/관리자 3가지 역할이 있어.",
+      "expected_output": "14-사용자매뉴얼/ 폴더에 14-사용자매뉴얼_v1.0.md 생성, 역할별 기능 가이드/FAQ/문제 해결 포함",
+      "files": []
+    },
+    {
+      "id": 11,
+      "prompt": "운영 매뉴얼 작성해줘. AWS 기반이고 ECS Fargate로 배포하고 있어. DB는 RDS PostgreSQL이야.",
+      "expected_output": "15-운영매뉴얼/ 폴더에 15-운영매뉴얼_v1.0.md 생성, 인프라 구성/장애 대응/백업 복구/모니터링/보안 운영 포함",
       "files": []
     }
   ]
