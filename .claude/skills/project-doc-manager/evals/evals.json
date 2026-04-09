@@ -23,13 +23,13 @@
       "id": 4,
       "prompt": "이 기능정의서를 참고해서 프로젝트 문서 전체를 만들어줘. docs 폴더 말고 루트에 생성해줘.",
       "expected_output": "참조 문서 기반으로 내용이 채워진 16종 문서 생성, 루트 경로에 생성, comprehensive depth",
-      "files": ["Jira_기능정의서_v3.md"]
+      "files": ["Project_Control_Hub.md"]
     },
     {
       "id": 5,
-      "prompt": "현재 문서들의 품질을 분석해줘. 원본 기능정의서 대비 누락된 내용이 뭐가 있는지 알려줘.",
+      "prompt": "현재 문서들의 품질을 분석해줘. 제품 기능 정의서(Project_Control_Hub.md) 대비 누락된 내용이 뭐가 있는지 알려줘.",
       "expected_output": "문서별 완성도 %, 누락/깊이/정합성 분석 레포트, Phase별 보강 로드맵",
-      "files": ["Jira_기능정의서_v3.md"]
+      "files": ["Project_Control_Hub.md"]
     },
     {
       "id": 6,

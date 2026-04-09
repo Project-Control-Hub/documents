@@ -1,13 +1,22 @@
-# Jira 기능 정의서 v3.0
+---
+문서명: Project Control Hub 제품 기능 정의서
+버전: v3.4
+작성일: 2026-03-08
+최종수정일: 2026-04-09
+작성자: 팀
+상태: 검토중
+---
 
-> **작성 기준**: Jira Software Cloud / Server 기준  
-> **최종 보완일**: 2026-03-08  
-> **버전**: v3.0 (운영 정책·워크플로우·릴리즈 관리·API 확장 포함)
+# Project Control Hub 제품 기능 정의서
+
+> **범위**: 본 문서는 **Project Control Hub(PCH)** 의 제품 기능·운영 규칙을 정의한다. 도메인 모델·UX 패턴은 **Jira Software Cloud**와 유사하게 설계한다.  
+> **API**: REST 예시 경로는 Jira Cloud REST API v3와 **개념 정렬**을 위한 참조이며, PCH 구현의 정본은 [`04-API정의서`](./04-API정의서/04-API정의서_v4.0.md)이다.
 
 ---
 
 ## 목차
 
+- [문서 역할 및 문서 체계](#문서-역할-및-문서-체계)
 1. [개요](#1-개요)
 2. [핵심 기능 영역](#2-핵심-기능-영역)
 3. [WIP 제한 설정](#3-wip-제한-설정)
@@ -29,9 +38,28 @@
 
 ---
 
+## 문서 역할 및 문서 체계
+
+| 구분 | 문서 | 관계 |
+|------|------|------|
+| 정본(본 문서) | `Project_Control_Hub.md` | 기능 영역·운영 정책·워크플로우의 서술적 정본 |
+| 요구사항 추적 | [`07-요구사항정의서`](./07-요구사항정의서/07-요구사항정의서_v2.2.md) | FR/NFR ID 및 추적 매트릭스 |
+| 화면·UI 상세 | [`06-화면기능정의서`](./06-화면기능정의서/06-화면기능정의서_v3.0.md) | 화면 단위 동작·검증 |
+| API 명세 | [`04-API정의서`](./04-API정의서/04-API정의서_v4.0.md) | 엔드포인트·스키마 |
+| 테스트 실행 결과 | [`13-테스트보고서`](./13-테스트보고서/13-테스트보고서_v1.0.md) | 스프린트·릴리즈별 통과율·결함·판정 |
+| 사용자 안내 | [`14-사용자매뉴얼`](./14-사용자매뉴얼/14-사용자매뉴얼_v1.0.md) | 최종 사용자 기능 사용법·FAQ |
+| 운영 절차 | [`15-운영매뉴얼`](./15-운영매뉴얼/15-운영매뉴얼_v1.0.md) | 인프라·백업·장애·보안 운영 |
+| 인덱스 | [`README.md`](./README.md) | 저장소 문서 목록 및 최신 버전 링크 |
+
+**추적 방향**: 본 문서의 기능 블록은 `07`의 FR 항목으로 매핑하고, UI가 있는 영역은 `06`의 화면 정의와 교차 참조한다.
+
+---
+
 ## 1. 개요
 
-**Jira**는 Atlassian이 개발한 이슈 트래킹 및 프로젝트 관리 도구로, 소프트웨어 개발팀의 애자일(Agile) 방법론 지원에 특화되어 있습니다. 단순한 이슈 트래커를 넘어, 팀 워크플로우 설계·릴리즈 관리·자동화·보고까지 통합하는 **협업 플랫폼**입니다.
+**Project Control Hub(PCH)**는 이슈 트래킹, 애자일 보드, 워크플로우·릴리즈 관리, JQL 검색, 알림·연동까지 통합한 **협업 플랫폼**이다. 소프트웨어 개발팀의 스크럼·칸반 운영을 전제로 하며, 단순 티켓 관리를 넘어 팀 표준(워크플로·DoR/DoD·감사 로그)을 제품 기능으로 제공한다.
+
+Jira Software와의 **기능 패리티**를 목표로 도메인 용어(Epic, Sprint, Fix Version 등)를 맞추되, 구축·운영 대상은 PCH 자체의 요구사항으로 관리한다.
 
 ---
 
@@ -296,13 +324,6 @@ flowchart LR
     CodeReview --> QA["🧪 QA"]
     QA --> InProgress
     QA --> Done["🚀 Done"]
-
-    style Backlog     fill:#f0f0f0,stroke:#999
-    style Selected    fill:#dbeafe,stroke:#3b82f6
-    style InProgress  fill:#fef9c3,stroke:#eab308
-    style CodeReview  fill:#ede9fe,stroke:#8b5cf6
-    style QA          fill:#fce7f3,stroke:#ec4899
-    style Done        fill:#dcfce7,stroke:#22c55e
 ```
 
 ### 8.3 전환(Transition) 규칙
@@ -338,12 +359,6 @@ graph TD
     Epic --> Bug["🐛 Bug\n결함"]
     Story --> Subtask["📌 Sub-task\n세부 작업"]
     Task --> Subtask
-
-    style Epic     fill:#f59e0b,color:#fff,stroke:#d97706
-    style Story    fill:#3b82f6,color:#fff,stroke:#2563eb
-    style Task     fill:#8b5cf6,color:#fff,stroke:#7c3aed
-    style Bug      fill:#ef4444,color:#fff,stroke:#dc2626
-    style Subtask  fill:#6b7280,color:#fff,stroke:#4b5563
 ```
 
 ### 9.3 타입 선택 가이드
@@ -437,7 +452,7 @@ flowchart TD
 
 ### 12.1 개요
 
-Atlassian Jira의 **Fix Version** 기능을 활용해 이슈를 릴리즈 단위로 묶어 관리합니다.
+PCH는 **Fix Version**(릴리즈 버전)으로 이슈를 배포 단위에 묶어 관리한다. 개념은 Jira Software의 Fix Version과 동일한 역할을 한다.
 
 | 기능 | 설명 |
 |------|------|
@@ -551,10 +566,12 @@ Confidential → Project Admin만 조회 가능
 
 ## 15. REST API 활용
 
-### 15.1 주요 API 엔드포인트
+PCH REST API의 상세 명세(경로·요청 스키마)는 [`04-API정의서_v4.0`](./04-API정의서/04-API정의서_v4.0.md)을 따른다. 아래 표와 요청 예시는 **Jira Software Cloud REST API v3와 개념을 맞추기 위한 참조**이며, 운영 환경의 실제 URL·PATH는 API 정의서 및 배포 가이드를 기준으로 한다.
 
-| API | 메서드 | 엔드포인트 | 용도 |
-|-----|--------|-----------|------|
+### 15.1 주요 API 엔드포인트 (Jira Cloud v3 스타일, 참조)
+
+| API | 메서드 | 엔드포인트 (참조) | 용도 |
+|-----|--------|------------------|------|
 | **Issue API** | POST | `/rest/api/3/issue` | 이슈 생성 |
 | **Issue API** | GET | `/rest/api/3/issue/{issueKey}` | 이슈 단건 조회 |
 | **Issue API** | PUT | `/rest/api/3/issue/{issueKey}` | 이슈 수정 |
@@ -649,16 +666,6 @@ graph TD
     Reports --> CFD["누적 흐름 다이어그램"]
 
     Board --> AuditLog["🔍 Audit Log"]
-
-    style Project  fill:#1e40af,color:#fff,stroke:#1e3a8a
-    style Epic     fill:#f59e0b,color:#fff,stroke:#d97706
-    style Story    fill:#3b82f6,color:#fff,stroke:#2563eb
-    style Task     fill:#8b5cf6,color:#fff,stroke:#7c3aed
-    style Bug      fill:#ef4444,color:#fff,stroke:#dc2626
-    style Subtask  fill:#6b7280,color:#fff,stroke:#4b5563
-    style Sprint   fill:#0891b2,color:#fff,stroke:#0e7490
-    style Done     fill:#16a34a,color:#fff,stroke:#15803d
-    style Release  fill:#dc2626,color:#fff,stroke:#b91c1c
 ```
 
 ---
@@ -697,3 +704,6 @@ graph TD
 | v2.0 | 2026-03-08 | WIP 제한, Story Point/Planning Poker, 아카이브 정책, Audit Log 강화, Mermaid 관계도 추가 |
 | v3.0 | 2026-03-08 | 운영 정책(7), 표준 Workflow(8), Issue 계층 정의(9), DoR/DoD(10), Sprint 운영 프로세스(11), Release 관리(12), 표준 Dashboard(13), 권한 매트릭스(14), REST API 확장(15), 전체 관계도 재설계(16) |
 | v3.1 | 2026-03-21 | 모바일 앱 기술 스택 섹션 추가 (Flutter 3.41 / Dart 3.11 / Riverpod / Dio) |
+| v3.2 | 2026-04-09 | 문서명·파일명을 PCH 제품 기능 정의서로 통일, 문서 역할·체계 섹션 추가, 본문을 PCH 중심으로 정리, REST API 절 참조·04-API정의서 연계 명시 |
+| v3.3 | 2026-04-09 | 문서 체계 표에 13~15(테스트 보고서·사용자/운영 매뉴얼) 참조 행 추가 |
+| v3.4 | 2026-04-09 | 문서 체계: 07-요구사항정의서 최신본 v2.2 링크로 갱신 |

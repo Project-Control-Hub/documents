@@ -2,7 +2,7 @@
 문서명: Project Control Hub Git 규칙 정의서
 버전: v3.0
 작성일: 2026-03-21
-최종수정일: 2026-03-22
+최종수정일: 2026-04-09
 작성자: 팀
 상태: 검토중
 ---
@@ -357,6 +357,8 @@ Branch name pattern: main
 ```
 
 > Slack #hotfix-log 채널 알림은 GitHub Actions `pull_request` 이벤트(merged + hotfix/* 브랜치)를 트리거로 자동 발송한다.
+
+> **연계**: 긴급 리뷰 체크리스트·72시간 사후 리뷰 의무는 [11-코드리뷰규칙 8절](../11-코드리뷰규칙/11-코드리뷰규칙_v3.0.md)과 동일 기준이다. (문서검수 Phase 4 Hotfix 정책 교차 참조)
 
 ```yaml
 # .github/workflows/hotfix-notify.yml 예시
@@ -983,3 +985,4 @@ coverage/
 | v1.0 | 2026-03-21 | 팀 | 최초 작성 |
 | v2.0 | 2026-03-21 | 팀 | Smart Commit, 브랜치 보호, Git Hook, 태그 전략, 충돌 해결, 브랜치 생명주기, LFS, 비밀값 보호 추가 |
 | v3.0 | 2026-03-22 | 팀 | Hotfix 브랜치 보호 바이패스 정책 추가 (5.3절: PM/TL bypass 권한, 1명 승인, 72시간 사후 리뷰, Slack #hotfix-log 자동 알림), Docker 이미지 태그 규칙 통일 (7.2절: Production=v{semver}, Staging=v{semver}-rc.{n}, 개발=v{semver}-{sha}) |
+| v3.0 | 2026-04-09 | 팀 | 문서검수 Phase 4: 5.3절에 11-코드리뷰규칙 8절 교차 링크 추가 |
